@@ -1,0 +1,5 @@
+number a = (2 + 3) * 2;
+number b = 5;
+
+show (((a * ((b + a) % 5)) + 6) / 3); # This is supposed to be 2
+return (a + b); # This is supposed to return 10
