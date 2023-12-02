@@ -1,4 +1,6 @@
-#include "utils.h"
+#include <stddef.h>
+#include <string.h>
+#include <stdlib.h>
 
 static int is_sep(char c, char const *separators)
 {

@@ -15,15 +15,13 @@ enum TokenType {
     CUSTOM,
     SEMI,
     RETURN,
-    INT,
-    FLOAT,
-    BOOL,
-    CHAR,
+    NUM,
+    STR,
 };
 
 typedef struct token_s {
     TokenType token;
-    char *value;
+    void *value;
 } token;
 
 #endif /* TOKENIZATION_H_ */

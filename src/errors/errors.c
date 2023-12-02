@@ -1,6 +1,14 @@
 #include "errors.h"
 #include "utils.h"
 
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+#include <stddef.h>
+#include <errno.h>
+#include <string.h>
+#include <stdio.h>
+
 void handle_stat_error(const char *filepath)
 {
     printf("The file: %s has encountered an error. Error code: %d\n", filepath, errno);
