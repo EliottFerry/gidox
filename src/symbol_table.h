@@ -1,5 +1,5 @@
-#ifndef SYNTAX_TABLE_H_
-#define SYNTAX_TABLE_H_
+#ifndef SYMBOL_TABLE_H_
+#define SYMBOL_TABLE_H_
 
 enum GidoxTokenType {
     OP_CBRC,
@@ -24,9 +24,9 @@ typedef struct gidox_token_s {
     void *value;
 } gidox_token;
 
-typedef struct syntax_table_s {
+typedef struct symbol_table_s {
     gidox_token *token;
-    struct syntax_table_s *next;
-} syntax_table;
+    struct symbol_table_s *next;
+} symbol_table;
 
-#endif /* SYNTAX_TABLE_H_ */
+#endif /* SYMBOL_TABLE_H_ */
