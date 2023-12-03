@@ -1,7 +1,7 @@
 #ifndef TOKENIZATION_H_
 #define TOKENIZATION_H_
 
-enum TokenType {
+enum GidoxTokenType {
     OP_CBRC,
     CL_CBRC,
     OP_RBRC,
@@ -19,9 +19,9 @@ enum TokenType {
     STR,
 };
 
-typedef struct token_s {
-    TokenType token;
+typedef struct gidox_token_s {
+    GidoxTokenType token;
     void *value;
-} token;
+} gidox_token;
 
 #endif /* TOKENIZATION_H_ */
