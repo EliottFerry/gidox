@@ -39,6 +39,10 @@ gidox_token *tokenization(gidox_compiler *engine)
             }
             if (char_is_in_array(engine->file_source[line_idx][col], IDENT_START_CHAR)) {
                 while (char_is_in_array(engine->file_source[line_idx][col], LEGAL_CHAR)) {
+                    if (buffer_idx >= MAX_TOKEN_LEN) {
+                        printf("Token exceed maximum size in line %d.\n", line_idx);
+                        return (NULL);
+                    }
                     buffer[buffer_idx] = engine->file_source[line_idx][col];
                     col++;
                     buffer_idx++;
