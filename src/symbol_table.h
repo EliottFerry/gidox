@@ -1,31 +1,22 @@
 #ifndef SYMBOL_TABLE_H_
 #define SYMBOL_TABLE_H_
 
-enum GidoxTokenType {
-    OP_CBRC,
-    CL_CBRC,
-    OP_RBRC,
-    CL_CBRC,
-    SUM,
-    DIV,
-    MUL,
-    DIV,
-    MOD,
-    EQUAL,
-    CUSTOM,
-    SEMI,
-    RETURN,
+#include "token.h"
+
+enum Types {
     NUM,
     STR,
 };
 
-typedef struct gidox_token_s {
-    GidoxTokenType token;
-    void *value;
-} gidox_token;
-
 typedef struct symbol_table_s {
     gidox_token *token;
+    char *name;
+    Types type;
+    int size;
+    int dimension;
+    int declaration_line;
+    int usage_line;
+    void *addr;
     struct symbol_table_s *next;
 } symbol_table;
 

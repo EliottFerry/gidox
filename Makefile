@@ -1,10 +1,7 @@
 CC=gcc
-UTILS_SRC=	src/utils/str_to_word_array.c \
-			src/utils/check_file_extension.c \
-			src/utils/2D_array.c
-SRC=src/main.c \
-	src/errors/errors.c
-CFLAGS=-W -Wall -I ./src/utils -I ./src/logger -I ./src/errors
+UTILS_SRC=$(wildcard src/utils/*.c)
+SRC=$(wildcard src/*.c src/errors/*.c)
+CFLAGS=-g -O2 -W -Wall -iquote ./src/utils -iquote ./src/logger -iquote ./src/errors
 OBJ=$(SRC:.c=.o)
 NAME=gidox
 

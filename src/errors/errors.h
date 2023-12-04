@@ -1,12 +1,12 @@
 #ifndef ERRORS_H_
 #define ERRORS_H_
 
-enum GidoxErrorType {
+typedef enum {
     TYPES,
-};
+} GidoxErrorType;
 
 typedef struct gidox_error_s {
-    // GidoxErrorType type;
+    GidoxErrorType type;
     int line;
     char *filename;
     struct gidox_error_s *next;

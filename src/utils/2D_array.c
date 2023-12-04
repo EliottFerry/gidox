@@ -5,7 +5,7 @@
 void show_2D_array(void **array, const char *flag)
 {
     for (int i = 0; array[i] != NULL; i++)
-        printf("%s\n", array[i]);
+        printf(flag, array[i]);
 }
 
 void free_2D_array(void **array)
