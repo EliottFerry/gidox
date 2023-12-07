@@ -11,9 +11,6 @@
 #include "compiler.h"
 #include "lexical_analyser.h"
 
-gidox_error_list *error_list = NULL;
-
-
 int get_source_file(char const *filepath, gidox_compiler *engine)
 {
     int fd = 0;
@@ -73,7 +70,7 @@ void free_engine(gidox_compiler *engine)
     free_2D_array((void **)(engine->file_source));
     free(engine->filename);
     free(engine);
-    free(error_list);
+    free(engine->error_list);
 }
 
 int main(int argc, char const **argv)
@@ -82,19 +79,21 @@ int main(int argc, char const **argv)
         printf("Error: please enter files to compile\n");
         return (84);
     }
-    if (error_pre_tokenization(++argv) != 0)
-        return (84);
-
-    error_list = malloc(sizeof(gidox_error_list));
-    if (error_list == NULL) {
-        print_error(ERROR_STR_ALLOC, var_name_str(error_list));
-        return (84);
-    }
+    ++argv;
     gidox_compiler *engine = malloc(sizeof(gidox_compiler));
     if (engine == NULL) {
         print_error(ERROR_STR_ALLOC, var_name_str(engine));
         return (84);
     }
+    engine->error_list = malloc(sizeof(gidox_error_list));
+    if (engine->error_list == NULL) {
+        print_error(ERROR_STR_ALLOC, var_name_str(engine->error_list));
+        return (84);
+    }
+
+    if (error_pre_tokenization(argv) != 0)
+        return (84);
+
     gidox_token *token_list = NULL;
     for (int i = 0; argv[i] != NULL; i++) {
         if (get_source_file(argv[i], engine) == ERROR) {

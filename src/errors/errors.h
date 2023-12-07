@@ -21,8 +21,6 @@ typedef struct gidox_error_list_s {
     struct gidox_error_list_s *next;
 } gidox_error_list;
 
-extern gidox_error_list *error_list;
-
 int error_pre_tokenization(const char **argv);
 void print_error(const char *error_msg, const char *where);
 

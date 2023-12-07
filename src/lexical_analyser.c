@@ -47,7 +47,6 @@ gidox_token *tokenization(gidox_compiler *engine)
                     col++;
                     buffer_idx++;
                 }
-                printf("Buffer after while: %s\n", buffer);
                 clear_buffer(buffer);
                 buffer_idx = 0;
             }
