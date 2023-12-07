@@ -3,8 +3,10 @@
 
 #include "errors.h"
 
+
+#define var_name_str(s) #s
 #define SUCCESS 0
-#define MALLOC_ERROR -99
+#define ERROR -99
 
 typedef struct gidox_compiler_s {
     gidox_error *error_list;

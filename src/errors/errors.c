@@ -14,6 +14,11 @@ void handle_stat_error(const char *filepath)
     printf("The file: %s has encountered an error. Error code: %d\n", filepath, errno);
 }
 
+void print_error(const char *error_msg, const char *where)
+{
+    printf("%s%s\n", error_msg, where);
+}
+
 int error_pre_tokenization(const char **filepath_array)
 {
     struct stat fs;
