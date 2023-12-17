@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 
+#define MAX_TOKEN_LEN 50
 #define ILLEGAL_CHAR "@~$"
 #define COMMENT_CHAR "#"
 #define OPERATOR "+-/*%="
@@ -30,11 +31,19 @@ typedef enum {
     GID_ENDOF
 } GidoxTokenType;
 
-typedef struct gidox_token_s {
+typedef struct gidox_token_data {
     GidoxTokenType token;
     uint32_t line;
     void *value;
+} gidox_token_data;
+
+typedef struct gidox_token_s {
+    gidox_token_data data;
     struct gidox_token_s *next;
 } gidox_token;
+
+void print_token_list(gidox_token *token_list);
+int add_in_token_list(gidox_token_data data, gidox_token **token_list);
+void free_token_list(gidox_token **token_list);
 
 #endif /* TOKEN_H_ */

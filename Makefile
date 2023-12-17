@@ -1,7 +1,7 @@
 CC=gcc
 UTILS_SRC=$(wildcard src/utils/*.c)
-SRC=$(wildcard src/*.c src/errors/*.c)
-CFLAGS=-g -O2 -W -Wall -iquote ./src/utils -iquote ./src/logger -iquote ./src/errors
+SRC=$(wildcard src/*.c src/token/*.c src/errors/*.c)
+CFLAGS=-g -O2 -W -Wall -iquote ./src/utils -iquote ./src/logger -iquote ./src/errors -iquote ./src/token -iquote ./src
 OBJ=$(SRC:.c=.o)
 NAME=gidox
 

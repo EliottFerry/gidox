@@ -68,6 +68,7 @@ int get_source_file(char const *filepath, gidox_compiler *engine)
 void free_engine(gidox_compiler *engine)
 {
     free_2D_array((void **)(engine->file_source));
+    free_token_list(&(engine->token_list));
     free(engine->filename);
     free(engine);
     free(engine->error_list);
@@ -94,15 +95,15 @@ int main(int argc, char const **argv)
     if (error_pre_tokenization(argv) != 0)
         return (84);
 
-    gidox_token *token_list = NULL;
     for (int i = 0; argv[i] != NULL; i++) {
         if (get_source_file(argv[i], engine) == ERROR) {
             free(engine);
             return (84);
         }
-        token_list = tokenization(engine);
-        if (token_list == NULL)
+        engine->token_list = tokenization(engine);
+        if (engine->token_list == NULL)
             break;
+        print_token_list(engine->token_list);
     }
     free_engine(engine);
     return (0);
