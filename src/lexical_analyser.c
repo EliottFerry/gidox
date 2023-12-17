@@ -3,7 +3,6 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "lexical_analyser.h"
 #include "token.h"
 #include "compiler.h"
 #include "utils.h"
@@ -14,7 +13,7 @@ void clear_buffer(char *buffer)
         buffer[i] = 0;
 }
 
-gidox_token *tokenization(gidox_compiler *engine)
+gidox_token *tokenization(const char **file_source, const char *filename)
 {
     char buffer[MAX_TOKEN_LEN + 1] = { 0 };
     gidox_token *token_list = NULL;
@@ -22,33 +21,34 @@ gidox_token *tokenization(gidox_compiler *engine)
     size_t buffer_idx = 0;
     GidoxTokenType next_token = GID_ENDOF;
 
-    for (size_t line = 0; engine->file_source[line]; line++) {
-        for (size_t col = 0; engine->file_source[line][col]; col++) {
-            if (char_is_in_array(engine->file_source[line][col], ILLEGAL_CHAR)) {
-                printf("Illegal character used line n°%ld in file: %s.\n", line + 1, engine->filename);
+    show_2D_array(file_source, "%s\n");
+    for (size_t line = 0; file_source[line]; line++) {
+        for (size_t col = 0; file_source[line][col]; col++) {
+            if (char_is_in_array(file_source[line][col], ILLEGAL_CHAR)) {
+                printf("Illegal character used line n°%ld in file: %s.\n", line + 1, filename);
                 return (NULL);
             }
         }
     }
 
-    for (; engine->file_source[line_idx] != NULL; line_idx++) {
-        for (size_t col = 0; engine->file_source[line_idx][col]; col++) {
+    for (; file_source[line_idx] != NULL; line_idx++) {
+        for (size_t col = 0; file_source[line_idx][col]; col++) {
             buffer_idx = 0;
-            if (char_is_in_array(engine->file_source[line_idx][col], SKIP_CHAR)) {
+            if (char_is_in_array(file_source[line_idx][col], SKIP_CHAR)) {
                 continue;
             }
-            if (char_is_in_array(engine->file_source[line_idx][col], COMMENT_CHAR)){
+            if (char_is_in_array(file_source[line_idx][col], COMMENT_CHAR)){
                 col = 0;
                 break;
             }
-            if (char_is_in_array(engine->file_source[line_idx][col], IDENT_START_CHAR)) {
+            if (char_is_in_array(file_source[line_idx][col], IDENT_START_CHAR)) {
                 next_token = GID_IDENT;
-                while (char_is_in_array(engine->file_source[line_idx][col], LEGAL_CHAR)) {
+                while (char_is_in_array(file_source[line_idx][col], LEGAL_CHAR)) {
                     if (buffer_idx > MAX_TOKEN_LEN - 1) {
                         printf("Token exceed maximum size in line %ld.\n", line_idx);
                         return (NULL);
                     }
-                    buffer[buffer_idx] = engine->file_source[line_idx][col];
+                    buffer[buffer_idx] = file_source[line_idx][col];
                     col++;
                     buffer_idx++;
                 }

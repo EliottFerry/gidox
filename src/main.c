@@ -52,7 +52,7 @@ int get_source_file(char const *filepath, gidox_compiler *engine)
         goto leave_open;
     }
 
-    engine->file_source = str_to_word_array(buffer, "\n");
+    engine->file_source = str_to_word_array_with_empty_lines(buffer, "\n");
     if (engine->file_source == NULL) {
         print_error(ERROR_STR_ALLOC, var_name_str(engine->file_source));
         return_value = ERROR;
@@ -100,7 +100,7 @@ int main(int argc, char const **argv)
             free(engine);
             return (84);
         }
-        engine->token_list = tokenization(engine);
+        engine->token_list = tokenization((const char **)engine->file_source, engine->filename);
         if (engine->token_list == NULL)
             break;
         print_token_list(engine->token_list);

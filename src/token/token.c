@@ -9,7 +9,7 @@
 void print_token_list(gidox_token *token_list)
 {
     size_t idx = 0;
-    for (; token_list->next != NULL; token_list = token_list->next, idx++) {
+    for (; token_list != NULL; token_list = token_list->next, idx++) {
         printf("Token n°%ld:\n\tType of token: %d\n\tLine of the token: %ld\n\tValue of the token: %s\n",
             idx,
             token_list->data.token,
