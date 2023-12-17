@@ -11,7 +11,7 @@
 #include "compiler.h"
 #include "lexical_analyser.h"
 
-int get_source_file(char const *filepath, gidox_compiler *engine)
+static int get_source_file(char const *filepath, gidox_compiler *engine)
 {
     int fd = 0;
     char *buffer;
@@ -65,11 +65,15 @@ int get_source_file(char const *filepath, gidox_compiler *engine)
     return (return_value);
 }
 
-void free_engine(gidox_compiler *engine)
+static void free_file_info(gidox_compiler *engine)
 {
     free_2D_array((void **)(engine->file_source));
-    free_token_list(&(engine->token_list));
     free(engine->filename);
+}
+
+static void free_engine(gidox_compiler *engine)
+{
+    free_token_list(&(engine->token_list));
     free(engine->error_list);
     free(engine);
 }
@@ -104,6 +108,7 @@ int main(int argc, char const **argv)
         if (engine->token_list == NULL)
             break;
         print_token_list(engine->token_list);
+        free_file_info(engine);
     }
     free_engine(engine);
     return (0);

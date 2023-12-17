@@ -21,7 +21,6 @@ gidox_token *tokenization(const char **file_source, const char *filename)
     size_t buffer_idx = 0;
     GidoxTokenType next_token = GID_ENDOF;
 
-    show_2D_array(file_source, "%s\n");
     for (size_t line = 0; file_source[line]; line++) {
         for (size_t col = 0; file_source[line][col]; col++) {
             if (char_is_in_array(file_source[line][col], ILLEGAL_CHAR)) {
