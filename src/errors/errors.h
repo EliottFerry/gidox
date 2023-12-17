@@ -6,6 +6,9 @@
 #define ERROR_STR_MEMCPY "Error while copying memory in: "
 #define ERROR_STR_OPEN "Error while opening file: "
 #define ERROR_STR_READ "Error while reading file: "
+
+#define SUCCESS 0
+#define ERROR -99
 typedef enum {
     TYPES,
 } GidoxErrorType;

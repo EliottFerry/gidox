@@ -33,7 +33,7 @@ typedef enum {
 
 typedef struct gidox_token_data {
     GidoxTokenType token;
-    uint32_t line;
+    size_t line;
     void *value;
 } gidox_token_data;
 
