@@ -69,6 +69,8 @@ int add_in_token_list(gidox_token_data data, gidox_token **token_list)
         return (ERROR);
     new_token->data.line = data.line;
     new_token->data.value = strdup((char *)data.value);
+    if (new_token->data.value == NULL)
+        return (ERROR);
     new_token->data.type = data.type;
     new_token->next = NULL;
     if (*token_list == NULL) {

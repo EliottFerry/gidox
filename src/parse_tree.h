@@ -1,7 +1,7 @@
 #ifndef PARSE_TREE_H_
 #define PARSE_TREE_H_
 
-#include "tokenization.h"
+#include "token.h"
 
 typedef struct gidox_parse_tree_s {
     gidox_token node_token;

@@ -31,9 +31,9 @@ Since it still the first version of the compiler, I'm only implementing basics s
 
 The extension of the files are `.gid`
 
-### Syntaxe
+### Syntax
 
-The syntaxe is similar as the one in C language. Lignes end with a semi-column, and the code is not indentation-based like Python.
+The syntax is similar as the one in C language. Lignes end with a semi-column, and the code is not indentation-based like Python.
 
 ### Comments
 

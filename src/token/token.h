@@ -46,5 +46,6 @@ typedef struct gidox_token_s {
 void print_token_list(gidox_token *token_list);
 int add_in_token_list(gidox_token_data data, gidox_token **token_list);
 void free_token_list(gidox_token **token_list);
+const char *get_token_type_name(GidoxTokenType type);
 
 #endif /* TOKEN_H_ */

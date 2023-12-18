@@ -9,7 +9,7 @@ enum Types {
 };
 
 typedef struct symbol_table_s {
-    gidox_token *token;
+    gidox_token_data *token;
     char *name;
     Types type;
     int size;
