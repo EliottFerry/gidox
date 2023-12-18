@@ -1,4 +1,4 @@
-int char_is_in_array(char elem, char *array)
+int char_is_in_array(const char elem, const char *array)
 {
     for (int i = 0; array[i]; i++)
         if (elem == array[i])

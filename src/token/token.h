@@ -18,6 +18,7 @@ typedef enum {
     GID_OP_RBRC,
     GID_CL_RBRC,
     GID_SUM,
+    GID_SUB,
     GID_DIV,
     GID_MUL,
     GID_MOD,
@@ -32,7 +33,7 @@ typedef enum {
 } GidoxTokenType;
 
 typedef struct gidox_token_data {
-    GidoxTokenType token;
+    GidoxTokenType type;
     size_t line;
     void *value;
 } gidox_token_data;
