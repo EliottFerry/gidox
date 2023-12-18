@@ -79,50 +79,38 @@ gidox_token *tokenization(const char **file_source, const char *filename)
             switch (file_source[line_idx][col]) {
                 case '(':
                     next_token_type = GID_OP_RBRC;
-                    add_char_to_buffer(buffer, &buffer_idx, file_source[line_idx][col]);
                     break;
                 case ')':
                     next_token_type = GID_CL_RBRC;
-                    add_char_to_buffer(buffer, &buffer_idx, file_source[line_idx][col]);
                     break;
                 case '[':
                     next_token_type = GID_OP_CBRC;
-                    add_char_to_buffer(buffer, &buffer_idx, file_source[line_idx][col]);
                     break;
                 case ']':
                     next_token_type = GID_CL_RBRC;
-                    add_char_to_buffer(buffer, &buffer_idx, file_source[line_idx][col]);
                     break;
                 case '=':
                     next_token_type = GID_EQUAL;
-                    add_char_to_buffer(buffer, &buffer_idx, file_source[line_idx][col]);
                     break;
                 case '+':
                     next_token_type = GID_SUM;
-                    add_char_to_buffer(buffer, &buffer_idx, file_source[line_idx][col]);
                     break;
                 case '-':
                     next_token_type = GID_SUB;
-                    add_char_to_buffer(buffer, &buffer_idx, file_source[line_idx][col]);
                     break;
                 case '/':
                     next_token_type = GID_DIV;
-                    add_char_to_buffer(buffer, &buffer_idx, file_source[line_idx][col]);
                     break;
                 case '%':
                     next_token_type = GID_MOD;
-                    add_char_to_buffer(buffer, &buffer_idx, file_source[line_idx][col]);
                     break;
                 case '*':
                     next_token_type = GID_MUL;
-                    add_char_to_buffer(buffer, &buffer_idx, file_source[line_idx][col]);
                     break;
                 case ';':
                     next_token_type = GID_SEMI;
-                    add_char_to_buffer(buffer, &buffer_idx, file_source[line_idx][col]);
                     break;
                 default:
-                    printf("%s\n", get_token_type_name(next_token_type));
                     if (char_is_in_array(file_source[line_idx][col], IDENT_START_CHAR))
                     {
                         next_token_type = GID_IDENT;
